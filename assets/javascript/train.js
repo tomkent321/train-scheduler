@@ -35,10 +35,9 @@ database.ref().on("child_added", function(childSnapshot){
     $("#rows-here").append("<tr> "  
     + "<td>" + childSnapshot.val().name + "</td>" 
     + "<td>" + childSnapshot.val().destination + "</td>" 
-    + "<td>" + childSnapshot.val().firstTime + "</td>" 
     + "<td>" + childSnapshot.val().frequency + "</td>" 
-    + "<td>'Formula goes here'</td>" 
-    + "<td>'Formula goes here'</td>" 
+    + "<td>'Next Arrival Formula goes here'</td>" 
+    + "<td>'Minutes Away Formula goes here'</td>" 
     +
   
   "</tr>");
