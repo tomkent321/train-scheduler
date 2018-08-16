@@ -33,7 +33,8 @@ database.ref().on("child_added", function(childSnapshot){
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
     var tRemainder = diffTime % tFrequency;
     var tMinutesTillTrain = tFrequency - tRemainder;
-    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    var nextTrain = moment().add(tMinutesTillTrain,"m");
+    nextTrain = nextTrain.format("HH:mm A");
     
   
     $("#rows-here").append("<tr> "  
