@@ -29,7 +29,24 @@ database.ref().on("child_added", function(childSnapshot){
     console.log(childSnapshot.val().firstTime);
     console.log(childSnapshot.val().frequency);
   
-  
+
+    var tFrequency = parseInt(frequency);
+    console.log("tFreq: " + frequency);
+    
+    var firstTime = firstTime;
+    console.log("First Time: " + firstTime);
+    var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+    var tRemainder = diffTime % tFrequency;
+    console.log(tRemainder);
+    var tMinutesTillTrain = tFrequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
     
   
     $("#rows-here").append("<tr> "  
@@ -65,6 +82,11 @@ $("#add-train").on("click", function(event){
       frequency: frequency
 
   });
+
+  $("#name-in").val("");
+  $("#destination-in").val("");
+  $("#firsTime-in").val("");
+  $("#frequency-in").val("");
 
 });
 
