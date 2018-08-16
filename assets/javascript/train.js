@@ -1,4 +1,99 @@
-// Assume the following situations.
+
+//   1. database connector
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCSRibVfafOhcOFd360zP9wWRgfe6tvjf0",
+    authDomain: "train-scheduler-45798.firebaseapp.com",
+    databaseURL: "https://train-scheduler-45798.firebaseio.com",
+    projectId: "train-scheduler-45798",
+    storageBucket: "train-scheduler-45798.appspot.com",
+    messagingSenderId: "617529535613"
+  };
+  firebase.initializeApp(config);// Assume the following situations.
+
+
+  var database = firebase.database();
+
+//set up variables
+
+var name="";
+var destination="";
+var firstTime=""
+var frequency="";
+
+
+database.ref().on("child_added", function(childSnapshot){
+
+    console.log(childSnapshot.val().name);
+    console.log(childSnapshot.val().destination);
+    console.log(childSnapshot.val().firstTime);
+    console.log(childSnapshot.val().frequency);
+  
+  
+    
+  
+    $("#rows-here").append("<tr> "  
+    + "<td>" + childSnapshot.val().name + "</td>" 
+    + "<td>" + childSnapshot.val().destination + "</td>" 
+    + "<td>" + childSnapshot.val().firstTime + "</td>" 
+    + "<td>" + childSnapshot.val().frequency + "</td>" 
+    + "<td>'Formula goes here'</td>" 
+    + "<td>'Formula goes here'</td>" 
+    +
+  
+  "</tr>");
+  
+  
+  });
+
+
+//   ===================================
+  
+
+$("#add-train").on("click", function(event){
+    event.preventDefault();
+
+    name = $("#name-in").val().trim();
+    destination = $("#destination-in").val().trim();
+    firstTime = $("#firsTime-in").val().trim();
+    frequency = $("#frequency-in").val().trim();
+
+    database.ref().push({
+
+      name: name,
+      destination: destination,
+      firstTime: firstTime,
+      frequency: frequency
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   When adding trains, administrators should be able to submit the following:
+//   Train Name
+//   Destination 
+//   First Train Time -- in military time
+//   Frequency -- in minutes
+//   Code this app to calculate when the next train will arrive; this should be relative to the current time.
+//   Users from many different machines must be able to view same train times.
+//   Styling and theme are completely up to you. Get Creative!
+
+
+
 
     // (TEST 1)
     // First Train of the Day is 3:00 AM
