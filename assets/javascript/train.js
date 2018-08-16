@@ -24,37 +24,24 @@ var frequency="";
 
 database.ref().on("child_added", function(childSnapshot){
 
-    console.log(childSnapshot.val().name);
-    console.log(childSnapshot.val().destination);
-    console.log(childSnapshot.val().firstTime);
-    console.log(childSnapshot.val().frequency);
-  
 
-    var tFrequency = parseInt(frequency);
-    console.log("tFreq: " + frequency);
+    var tFrequency = childSnapshot.val().frequency;
     
-    var firstTime = firstTime;
-    console.log("First Time: " + firstTime);
+    var firstTime = childSnapshot.val().firstTime;
     var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
-    console.log(firstTimeConverted);
     var currentTime = moment();
-    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-    console.log("DIFFERENCE IN TIME: " + diffTime);
     var tRemainder = diffTime % tFrequency;
-    console.log(tRemainder);
     var tMinutesTillTrain = tFrequency - tRemainder;
-    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
     
   
     $("#rows-here").append("<tr> "  
     + "<td>" + childSnapshot.val().name + "</td>" 
     + "<td>" + childSnapshot.val().destination + "</td>" 
     + "<td>" + childSnapshot.val().frequency + "</td>" 
-    + "<td>'Next Arrival Formula goes here'</td>" 
-    + "<td>'Minutes Away Formula goes here'</td>" 
+    + "<td>" + nextTrain + "</td>" 
+    + "<td>" + tMinutesTillTrain + "</td>" 
     +
   
   "</tr>");
