@@ -1,0 +1,41 @@
+.jumbotron {
+    /* background-color: rgb(0, 0, 0); */
+    color:white;
+    /* background-image: url("../images/track_sm.png"); */
+    background-image: url("../images/tracks_sm.png");
+    /* background-image: url("../images/track_sm.png"); */
+    /* background-color: black; */
+    text-align: right;
+
+    height: 250px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    
+}
+button {
+
+    margin-top:10px;
+    float: right;
+    margin-bottom: 25px;
+    
+}
+
+#table {
+    /* background-image: linear-gradient(red, yellow, blue); */
+    /* background-color: brown; */
+    /* background-image: linear-gradient(180deg, rgb(255, 183, 0), rgb(206, 84, 62)); */
+    background-image: linear-gradient(180deg, rgba(255, 183, 0, 0.725), rgb(206, 84, 62, 0.625));
+    text-align: center;
+}
+
+#map-hold {
+
+padding:30px;
+
+}
+
+form {
+    border: 1px black solid;
+    padding: 10px;
+}
